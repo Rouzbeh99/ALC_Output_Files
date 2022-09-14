@@ -1,2 +1,3 @@
 N = 2048:
-	- compiled_with_O3: 
+	- compiled_with_O3: 812 cycles
+	- ALC_Applied: 1090 cycles
