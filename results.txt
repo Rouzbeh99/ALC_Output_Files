@@ -1,0 +1,2 @@
+N = 2048:
+	- compiled_with_O3: 
