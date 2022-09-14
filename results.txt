@@ -1,3 +1,4 @@
 N = 4096:
-	- compiled_with_O3: 16280 cycles  -------> output: 8388608
-	- ALC_Applied: 16178 cycles    ----------> output: 8388608
+	- compiled_with_O3: 9668 cycles  
+	- ALC_Applied: 9480 cycles 	 ----------> ~ 2% speed up
+	
