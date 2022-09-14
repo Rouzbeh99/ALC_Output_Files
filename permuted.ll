@@ -3,8 +3,8 @@ source_filename = "test.c"
 target datalayout = "e-m:e-i8:8:32-i16:16:32-i64:64-i128:128-n32:64-S128"
 target triple = "aarch64-unknown-linux-gnu"
 
-@__const.main.a = private unnamed_addr constant [8 x i32] [i32 1, i32 -1, i32 2, i32 -2, i32 3, i32 -3, i32 4, i32 -4], align 4
-@__const.main.b = private unnamed_addr constant [8 x i32] [i32 2, i32 2, i32 2, i32 2, i32 2, i32 2, i32 2, i32 2], align 4
+@__const.main.a = private unnamed_addr constant [16 x i32] [i32 1, i32 -1, i32 2, i32 -2, i32 3, i32 -3, i32 4, i32 -4, i32 1, i32 -1, i32 2, i32 -2, i32 3, i32 -3, i32 4, i32 -4], align 4
+@__const.main.b = private unnamed_addr constant [16 x i32] [i32 2, i32 2, i32 2, i32 2, i32 2, i32 2, i32 2, i32 2, i32 2, i32 2, i32 2, i32 2, i32 2, i32 2, i32 2, i32 2], align 4
 @.str = private unnamed_addr constant [4 x i8] c"%d \00", align 1
 
 ; Function Attrs: argmemonly nofree norecurse nosync nounwind uwtable
@@ -198,20 +198,20 @@ declare void @llvm.lifetime.end.p0(i64 immarg, ptr nocapture) #2
 ; Function Attrs: nofree nounwind uwtable
 define dso_local i32 @main() local_unnamed_addr #3 !dbg !46 {
 entry:
-  %c = alloca [8 x i32], align 4
-  call void @llvm.dbg.value(metadata i32 8, metadata !50, metadata !DIExpression()), !dbg !59
+  %c = alloca [16 x i32], align 4
+  call void @llvm.dbg.value(metadata i32 16, metadata !50, metadata !DIExpression()), !dbg !59
   call void @llvm.dbg.declare(metadata ptr @__const.main.a, metadata !51, metadata !DIExpression()), !dbg !60
   call void @llvm.dbg.declare(metadata ptr @__const.main.b, metadata !55, metadata !DIExpression()), !dbg !61
-  call void @llvm.lifetime.start.p0(i64 32, ptr nonnull %c) #11, !dbg !62
+  call void @llvm.lifetime.start.p0(i64 64, ptr nonnull %c) #11, !dbg !62
   call void @llvm.dbg.declare(metadata ptr %c, metadata !56, metadata !DIExpression()), !dbg !63
-  call void @llvm.memset.p0.i64(ptr noundef nonnull align 4 dereferenceable(32) %c, i8 0, i64 32, i1 false), !dbg !63
+  call void @llvm.memset.p0.i64(ptr noundef nonnull align 4 dereferenceable(64) %c, i8 0, i64 64, i1 false), !dbg !63
   tail call void @llvm.experimental.noalias.scope.decl(metadata !64), !dbg !67
   tail call void @llvm.experimental.noalias.scope.decl(metadata !68), !dbg !67
   tail call void @llvm.experimental.noalias.scope.decl(metadata !70), !dbg !67
   call void @llvm.dbg.value(metadata ptr @__const.main.a, metadata !21, metadata !DIExpression()), !dbg !72
   call void @llvm.dbg.value(metadata ptr @__const.main.b, metadata !22, metadata !DIExpression()), !dbg !72
   call void @llvm.dbg.value(metadata ptr %c, metadata !23, metadata !DIExpression()), !dbg !72
-  call void @llvm.dbg.value(metadata i32 8, metadata !24, metadata !DIExpression()), !dbg !72
+  call void @llvm.dbg.value(metadata i32 16, metadata !24, metadata !DIExpression()), !dbg !72
   call void @llvm.dbg.value(metadata i32 0, metadata !25, metadata !DIExpression()), !dbg !74
   br label %for.body.i, !dbg !75
 
@@ -235,7 +235,7 @@ if.then.i:                                        ; preds = %for.body.i
 for.inc.i:                                        ; preds = %if.then.i, %for.body.i
   %indvars.iv.next.i = add nuw nsw i64 %indvars.iv.i, 1, !dbg !91
   call void @llvm.dbg.value(metadata i64 %indvars.iv.next.i, metadata !25, metadata !DIExpression()), !dbg !74
-  %exitcond.not.i = icmp eq i64 %indvars.iv.next.i, 8, !dbg !92
+  %exitcond.not.i = icmp eq i64 %indvars.iv.next.i, 16, !dbg !92
   br i1 %exitcond.not.i, label %for.body.preheader, label %for.body.i, !dbg !75, !llvm.loop !93
 
 for.body.preheader:                               ; preds = %for.inc.i
@@ -243,18 +243,18 @@ for.body.preheader:                               ; preds = %for.inc.i
 
 for.cond.cleanup:                                 ; preds = %for.body
   %putchar = tail call i32 @putchar(i32 10), !dbg !96
-  call void @llvm.lifetime.end.p0(i64 32, ptr nonnull %c) #11, !dbg !97
+  call void @llvm.lifetime.end.p0(i64 64, ptr nonnull %c) #11, !dbg !97
   ret i32 0, !dbg !98
 
 for.body:                                         ; preds = %for.body.preheader, %for.body
   %indvars.iv = phi i64 [ %indvars.iv.next, %for.body ], [ 0, %for.body.preheader ]
   call void @llvm.dbg.value(metadata i64 %indvars.iv, metadata !57, metadata !DIExpression()), !dbg !99
-  %arrayidx = getelementptr inbounds [8 x i32], ptr %c, i64 0, i64 %indvars.iv, !dbg !100
+  %arrayidx = getelementptr inbounds [16 x i32], ptr %c, i64 0, i64 %indvars.iv, !dbg !100
   %2 = load i32, ptr %arrayidx, align 4, !dbg !100, !tbaa !79
   %call = tail call i32 (ptr, ...) @printf(ptr noundef nonnull @.str, i32 noundef %2), !dbg !103
   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1, !dbg !104
   call void @llvm.dbg.value(metadata i64 %indvars.iv.next, metadata !57, metadata !DIExpression()), !dbg !99
-  %exitcond.not = icmp eq i64 %indvars.iv.next, 8, !dbg !105
+  %exitcond.not = icmp eq i64 %indvars.iv.next, 16, !dbg !105
   br i1 %exitcond.not, label %for.cond.cleanup, label %for.body, !dbg !95, !llvm.loop !106
 }
 
@@ -321,7 +321,7 @@ attributes #11 = { nounwind }
 !llvm.ident = !{!13}
 
 !0 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1, producer: "clang version 15.0.0 (https://www.github.com/llvm/llvm-project.git 61baf2ffa7071944c00a0642fdb9ff77d9cff0da)", isOptimized: true, runtimeVersion: 0, emissionKind: FullDebug, splitDebugInlining: false, nameTableKind: None)
-!1 = !DIFile(filename: "test.c", directory: "/home/rouzbeh/Graduate/LLVM/Active-Lane-Conslidation/Transformation Pass/Vectorizer Pass/test", checksumkind: CSK_MD5, checksum: "c5d0df64e1ff873f94aa4d4359d35ec8")
+!1 = !DIFile(filename: "test.c", directory: "/home/rouzbeh/Graduate/LLVM/Active-Lane-Conslidation/Transformation Pass/Vectorizer Pass/test", checksumkind: CSK_MD5, checksum: "cc0e89864f0735728ef466d113ea90f6")
 !2 = !{i32 7, !"Dwarf Version", i32 5}
 !3 = !{i32 2, !"Debug Info Version", i32 3}
 !4 = !{i32 1, !"wchar_size", i32 4}
@@ -372,9 +372,9 @@ attributes #11 = { nounwind }
 !49 = !{!50, !51, !55, !56, !57}
 !50 = !DILocalVariable(name: "n", scope: !46, file: !1, line: 14, type: !19)
 !51 = !DILocalVariable(name: "a", scope: !46, file: !1, line: 15, type: !52)
-!52 = !DICompositeType(tag: DW_TAG_array_type, baseType: !19, size: 256, elements: !53)
+!52 = !DICompositeType(tag: DW_TAG_array_type, baseType: !19, size: 512, elements: !53)
 !53 = !{!54}
-!54 = !DISubrange(count: 8)
+!54 = !DISubrange(count: 16)
 !55 = !DILocalVariable(name: "b", scope: !46, file: !1, line: 16, type: !52)
 !56 = !DILocalVariable(name: "c", scope: !46, file: !1, line: 17, type: !52)
 !57 = !DILocalVariable(name: "i", scope: !58, file: !1, line: 21, type: !19)
