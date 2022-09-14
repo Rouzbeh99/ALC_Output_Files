@@ -1,4 +1,12 @@
-N = 4096:
+n = 4096:
+ 	VLength = 4
 	- compiled_with_O3: 9668 cycles  
 	- ALC_Applied: 9480 cycles 	 ----------> ~ 2% speed up
 	
+	
+_________________________________________________________________________________________________________
+
+n = 65536:
+	VLength = 4
+	- compiled_with_O3: 153223 cycles  
+	- ALC_Applied: 155473 cycles 	 ----------> ~ 1.5% perfromace degradation!!
