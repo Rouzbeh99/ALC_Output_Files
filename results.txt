@@ -78,6 +78,7 @@ ________________________________________________________________________________
 n = 524288:
  	VLength = 4
 	- compiled_with_O3: 1344218 cycles  						-----> simulation time: 17 minutes
+	- ALC_Applied: 1342015 cycles 	 ----------> ~ 0.28% speed up	
 	
 	
 	
@@ -87,18 +88,21 @@ n = 524288:
 	
 	
 	
-	
-	
+n = 4096:	
 	
 	- O3     		cycles: 9713    CPI: 0.33
-	- vectorized  		cycles: 9478	 CPI: 0.33
+	- vectorized  		cycles: 9478	 CPI: 0.33		------>		2.41% speed up
+	
+n = 16384:
+
+	-O3			cycles: 36668    CPI: 0.31
+	- vectorized  		cycles: 36569	 CPI: 0.31		------>		0.27% speed up		
 	
 	
 	
 	
 	
 	
-	- ALC_Applied: 1342015 cycles 	 ----------> ~ 0.28% speed up	
 	
 _________________________________________________________________________________________________________
 
