@@ -1,7 +1,7 @@
 s253 10 iterations, LEN_1D = 8192 
 
 O3:
-	checksum: not printed!!
+	checksum: 98304
 	total cycles: 245803
 	total instructuons: 1147169
 	CPI: 0.21!
@@ -15,7 +15,7 @@ armclang:
 --------------------------------------------------------------
 
 my pass:
-	checksum: not printed!!
+	checksum: 98304
 	total cycles: 51817					       ------> 4.74X improvment over O3!!
 	total instructuons: 123220
 	CPI: 0.42!
