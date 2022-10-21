@@ -20,3 +20,9 @@ my pass:
 	total instructuons: 123220
 	CPI: 0.42!
 --------------------------------------------------------------
+
+vectorized factor 2:
+	checksum: 98304
+	total cycles: 558202					       
+	total instructuons: 1089497
+	CPI: 0.51
