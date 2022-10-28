@@ -7,22 +7,28 @@ O3:
 	CPI: 0.21!
 --------------------------------------------------------------
 
-armclang:
+armclang factor 4:
 	checksum: 98304
 	total cycles: 50705						------> 4.8X improvment  over O3
 	total instructuons: 122921
 	CPI: 0.41!
 --------------------------------------------------------------
 
-my pass:
+my vectorizer factor 4:
 	checksum: 98304
 	total cycles: 51817					       ------> 4.74X improvment over O3
 	total instructuons: 123220
 	CPI: 0.42!
 --------------------------------------------------------------
 
-mypass factor 2:
+my vectorizer factor 2:
 	checksum: 98304
 	total cycles: 96012					       
 	total instructuons: 246100
 	CPI: 0.39
+
+--------------------------------------------------------------
+
+iterative alc factor 2:
+	
+
