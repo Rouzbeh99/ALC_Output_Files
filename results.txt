@@ -29,6 +29,9 @@ my vectorizer factor 2:
 
 --------------------------------------------------------------
 
-iterative alc factor 2:
-	
+simple alc factor 2:
+	checksum: ---------> wrong, replaced scatter store with masked store
+	total cycles: 192325					       
+	total instructuons: 400164
+	CPI: 0.48
 
